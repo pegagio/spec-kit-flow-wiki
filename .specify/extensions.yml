@@ -1,7 +1,6 @@
 installed:
-- spec-kit-diagram
+- flow-wiki
 - time-machine
-- wiki
 settings:
   auto_execute_hooks: true
 hooks:
@@ -14,8 +13,8 @@ hooks:
     prompt: Feature implemented. Continue to the next feature in the queue?
     description: ''
     condition: null
-  - extension: wiki
-    command: speckit.wiki.ingest
+  - extension: flow-wiki
+    command: speckit.flow-wiki.ingest
     enabled: true
     optional: true
     priority: 10
@@ -23,8 +22,8 @@ hooks:
     description: Capture implementation learnings into the wiki after implementation
     condition: null
   after_plan:
-  - extension: wiki
-    command: speckit.wiki.ingest
+  - extension: flow-wiki
+    command: speckit.flow-wiki.ingest
     enabled: true
     optional: true
     priority: 10

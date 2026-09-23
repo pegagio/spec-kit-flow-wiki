@@ -1,4 +1,0 @@
-database:
-  # Optional machine-local absolute path. When absent, the helper omits --file.
-  path:
-

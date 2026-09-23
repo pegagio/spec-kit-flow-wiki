@@ -10,3 +10,6 @@ Sources are immutable inputs — the wiki never edits them.
 | S003 | `specs/003-cited-wiki-query` | directory | 2026-08-26 | 2026-08-26 | `cited-query-evidence-pipeline.md`, `coverage-verdicts.md`, `query-trust-boundary.md`, `wiki-command-lifecycle.md`, `bounded-and-auditable-maintenance.md` |
 | S004 | `specs/004-wiki-health-checks` | directory | 2026-08-26 | 2026-08-26 | `wiki-health-check-pipeline.md`, `lint-checks-and-findings.md`, `lint-repair-boundary.md`, `wiki-command-lifecycle.md`, `bounded-and-auditable-maintenance.md` |
 | S005 | `specs/005-wiki-status-resumption` | directory | 2026-08-26 | 2026-08-26 | `wiki-status-snapshot.md`, `status-next-action-policy.md`, `status-read-boundary.md`, `wiki-command-lifecycle.md`, `bounded-and-auditable-maintenance.md` |
+| S006 | `README.md` | file | 2026-09-23 | 2026-09-23 | `flow-wiki-identity.md`, `configuration-resolution.md`, `wiki-command-lifecycle.md` |
+| S007 | `docs/migration.md` | file | 2026-09-23 | 2026-09-23 | `consumer-identity-migration.md`, `flow-wiki-identity.md` |
+| S008 | `specs/006-adopt-flow-wiki-identity/spec.md` | file | 2026-09-23 | 2026-09-23 | `flow-wiki-identity.md` |

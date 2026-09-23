@@ -23,11 +23,16 @@ page files, not here.
 - [Bounded and auditable maintenance](./pages/bounded-and-auditable-maintenance.md)
 - [Code documentation boundary](./pages/code-documentation-boundary.md)
 - [Declarative extension architecture](./pages/declarative-extension-architecture.md)
+- [Flow Wiki identity](./pages/flow-wiki-identity.md)
 - [Lint repair boundary](./pages/lint-repair-boundary.md)
 - [Query trust boundary](./pages/query-trust-boundary.md)
 - [Repository-oriented wiki](./pages/repository-oriented-wiki.md)
 - [Status next-action policy](./pages/status-next-action-policy.md)
 - [Status read boundary](./pages/status-read-boundary.md)
+
+## Howto
+
+- [Consumer identity migration](./pages/consumer-identity-migration.md)
 
 ## Reference
 

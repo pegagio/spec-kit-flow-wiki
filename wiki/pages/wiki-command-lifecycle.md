@@ -7,26 +7,29 @@ sources:
   - S003
   - S004
   - S005
-updated: 2026-08-26
+  - S006
+updated: 2026-09-23
 ---
 
 # Wiki command lifecycle
 
 The extension maps the LLM Wiki model to four ongoing maintenance commands with distinct responsibilities, while initialization is a separate foundation operation. (S001, S002)
 
+The original commands used `speckit.wiki.*`; the current [Flow Wiki identity](./flow-wiki-identity.md) uses `speckit.flow-wiki.*` without old-name aliases. Their read, write, evidence, and limit boundaries remain distinct. (S001, S006)
+
 ## Initialize
 
-`/speckit.wiki.init` resolves configuration and creates the schema, empty index, and empty source registry exactly once without creating knowledge pages. Later invocations preserve existing state, optionally append an explicitly supplied scope item, and otherwise report status. (S002)
+`/speckit.flow-wiki.init` resolves configuration and creates the schema, empty index, and empty source registry exactly once without creating knowledge pages. Later invocations preserve existing state, optionally append an explicitly supplied scope item, and otherwise report status. (S002, S006)
 
 ## Ingest
 
-`/speckit.wiki.ingest` registers one immutable source, extracts durable knowledge, performs cap-bounded page updates, and maintains the index. (S001)
+`/speckit.flow-wiki.ingest` registers one immutable source, extracts durable knowledge, performs cap-bounded page updates, and maintains the index. (S001, S006)
 
 Spec Kit research and plan decisions are first-class sources, and `after_plan` and `after_implement` hooks align ingestion with moments when spec-driven development produces knowledge. (S001)
 
 ## Query
 
-`/speckit.wiki.query` loads a bounded page slice, requires citations, and reports honestly when wiki coverage is insufficient. (S001)
+`/speckit.flow-wiki.query` loads a bounded page slice, requires citations, and reports honestly when wiki coverage is insufficient. (S001, S006)
 
 Query decomposes the question into material parts, ranks index entries before reading bodies, validates selected claims against registered source IDs, and emits exactly one coverage verdict. Empty input returns a bounded structural overview. (S003)
 
@@ -34,7 +37,7 @@ The [cited query evidence pipeline](./cited-query-evidence-pipeline.md) defines 
 
 ## Lint
 
-`/speckit.wiki.lint` performs six health checks while keeping semantic findings report-only and limiting automatic repair to mechanical drift. (S001)
+`/speckit.flow-wiki.lint` performs six health checks while keeping semantic findings report-only and limiting automatic repair to mechanical drift. (S001, S006)
 
 Lint accepts full-wiki, named-check, or page-neighborhood scope; analyzes before preparing changes; applies only a validated fix set; replaces the derived current-run report; and recommends exactly one highest-value unresolved action. (S004)
 
@@ -42,7 +45,7 @@ The [wiki health-check pipeline](./wiki-health-check-pipeline.md) defines execut
 
 ## Status
 
-`/speckit.wiki.status` rebuilds context from files so work can resume after an agent restart, compaction, or context-window overflow. (S001)
+`/speckit.flow-wiki.status` rebuilds context from files so work can resume after an agent restart, compaction, or context-window overflow. (S001, S006)
 
 Status reads structural metadata only, renders a bounded snapshot of scope, pages, sources, freshness, and open issues, and selects exactly one evidence-backed next action without reading knowledge bodies or changing project state. (S005)
 

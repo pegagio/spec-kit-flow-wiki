@@ -3,12 +3,13 @@ title: Configuration resolution
 type: concept
 sources:
   - S002
-updated: 2026-08-26
+  - S006
+updated: 2026-09-23
 ---
 
 # Configuration resolution
 
-Each wiki configuration field resolves independently in descending authority: invocation override, `SPECKIT_WIKI_*` environment override, saved project configuration, then extension default. Missing higher-authority values fall through without changing how other fields resolve. (S002)
+Each wiki configuration field resolves independently in descending authority: invocation override, environment override, saved project configuration, then extension default. The original namespace was `SPECKIT_WIKI_*`; the current [Flow Wiki identity](./flow-wiki-identity.md) uses `SPECKIT_FLOW_WIKI_*`. Missing higher-authority values fall through without changing how other fields resolve. (S002, S006)
 
 Numeric page, word, query, and context limits must be positive whole numbers; the staleness threshold must be a non-negative whole number; citation policy must be Boolean; auto-fix must be `none` or `index-and-links`; and page types must be a non-empty list of unique names. (S002)
 

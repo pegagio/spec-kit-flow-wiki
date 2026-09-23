@@ -131,3 +131,11 @@ Complete US1 source identity, then US2 action correctness, then US3 migration an
 - `[P]` means different files and no dependency on an incomplete task at that point.
 - Existing historical specs, completed queue records, older changelog entries, and cited wiki claims are evidence, not rename targets.
 - No task authorizes an incidental commit, push, release, or other unrelated change; external publication is an explicit final gate.
+
+## Phase 7: Convergence
+
+- [X] T033 Update `docs/migration.md` with the verified published `v2.0.0` archive installation command and remove the completed pre-publication contingency per FR-005 and plan: published repository (partial).
+
+## Phase 8: Convergence
+
+- [X] T034 Correct the `docs/migration.md` verification order so temporary duplicate hooks do not block removal of `wiki`, and verify exactly one active ingest hook only after removal per FR-006 and US3/AC1 (partial).

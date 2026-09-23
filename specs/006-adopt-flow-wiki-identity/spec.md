@@ -4,7 +4,7 @@
 
 **Created**: 2026-09-23
 
-**Status**: Draft
+**Status**: Complete
 
 **Input**: User description: "I'm considering renaming the project to `spec-kit-flow-wiki`. Spec Kit Flow is a project family that I am developing, based on my own personal workflows in Spec Kit and the extensions I like to use. The extension id would be `flow-wiki`. The human readable skills would be named \"FlowKit <action>\"."
 
