@@ -18,7 +18,7 @@ Sync Impact Report
 - Follow-up TODOs: None
 -->
 
-# Spec Kit Wiki Constitution
+# Spec Kit Flow Wiki Constitution
 
 ## Core Principles
 

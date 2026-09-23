@@ -1,8 +1,13 @@
 ---
-description: "Create the project wiki skeleton (schema, index, source registry) — the three-layer LLM Wiki structure"
+name: speckit-flow-wiki-init
+description: Create the project wiki skeleton (schema, index, source registry) — the three-layer LLM Wiki structure
+compatibility: Requires spec-kit project structure with .specify/ directory
+metadata:
+  author: github-spec-kit
+  source: flow-wiki:commands/speckit.flow-wiki.init.md
 ---
 
-# Initialize LLM Wiki
+# Initialize Flow Wiki
 
 Set up the persistent, LLM-maintained project wiki. After this command, the
 project has a compounding knowledge layer — ordinary markdown, committed with
@@ -29,14 +34,14 @@ tokens (e.g. `directory=docs/wiki`) are configuration overrides.
 ### 1. Resolve configuration
 
 1. Start with the extension defaults (`wiki/` directory, 12 pages max per ingest, 600 words per page, citations required, 8-page query slice, 4000 context tokens, 90-day staleness, `index-and-links` auto-fix, and the default page types).
-2. Overlay `.specify/extensions/wiki/wiki-config.yml` if it exists, then `SPECKIT_WIKI_*` environment variable overrides, then `key=value` overrides from `$ARGUMENTS`. Resolve each setting independently; a missing higher-precedence value falls through to the next source.
+2. Overlay `.specify/extensions/flow-wiki/flow-wiki-config.yml` if it exists, then `SPECKIT_FLOW_WIKI_*` environment variable overrides, then `key=value` overrides from `$ARGUMENTS`. Resolve each setting independently; a missing higher-precedence value falls through to the next source.
 3. Validate the effective settings before reading or writing wiki state. The directory must be a non-empty repository-relative path; page, word, query, and context limits must be positive whole numbers; the staleness threshold must be a non-negative whole number; citation policy must be boolean; `lint.auto_fix` must be `none` or `index-and-links`; page types must be a non-empty list of unique names. Reject unknown override keys and invalid values with the setting name and accepted form.
 4. Resolve the repository root and configured directory to normalized absolute paths, resolving any existing symbolic-link components. `WIKI_DIR` must be the repository root itself or a descendant of it. If the candidate escapes that boundary, stop before any wiki read or write, identify the rejected directory, and report that nothing changed.
 5. Use the validated canonical candidate as `WIKI_DIR` for every later check and write.
 
 ### 2. Idempotency check
 
-If `WIKI_DIR/SCHEMA.md` already exists, **do not overwrite, regenerate, or repair any wiki artifact**. If the user supplied a new scope sentence in `$ARGUMENTS`, append that text verbatim to the `## Scope` section as exactly one additional numbered item; otherwise write nothing. Report that the wiki is already initialized, behave exactly like `/speckit.wiki.status`, and stop. Treat the schema as the sole initialization sentinel: missing companion artifacts are surfaced by status or lint and are never silently reconstructed here.
+If `WIKI_DIR/SCHEMA.md` already exists, **do not overwrite, regenerate, or repair any wiki artifact**. If the user supplied a new scope sentence in `$ARGUMENTS`, append that text verbatim to the `## Scope` section as exactly one additional numbered item; otherwise write nothing. Report that the wiki is already initialized, behave exactly like `/speckit.flow-wiki.status`, and stop. Treat the schema as the sole initialization sentinel: missing companion artifacts are surfaced by status or lint and are never silently reconstructed here.
 
 ### 3. Create the wiki skeleton
 
@@ -48,10 +53,10 @@ Before writing, verify that `WIKI_DIR` can be created or written and that none o
 # Wiki Schema
 
 This file defines how this wiki is structured and maintained. Edit it to
-change the rules; `/speckit.wiki.*` commands read it before writing anything.
+change the rules; `/speckit.flow-wiki.*` commands read it before writing anything.
 
 ## Scope
-1. <scope from $ARGUMENTS, or "(not set — pass a sentence to /speckit.wiki.init)">
+1. <scope from $ARGUMENTS, or "(not set — pass a sentence to /speckit.flow-wiki.init)">
 
 ## Page types
 | Type | Holds | Example title |
@@ -73,10 +78,10 @@ change the rules; `/speckit.wiki.*` commands read it before writing anything.
 - Frontmatter per page: `title`, `type`, `sources`, `updated` (ISO date).
 
 ## Maintenance workflows
-- Grow: `/speckit.wiki.ingest <source>` — the only way knowledge enters.
-- Use: `/speckit.wiki.query <question>` — answers come from pages, cited.
-- Check: `/speckit.wiki.lint` — drift, orphans, contradictions, staleness.
-- Resume: `/speckit.wiki.status` — the session-resume entry point.
+- Grow: `/speckit.flow-wiki.ingest <source>` — the only way knowledge enters.
+- Use: `/speckit.flow-wiki.query <question>` — answers come from pages, cited.
+- Check: `/speckit.flow-wiki.lint` — drift, orphans, contradictions, staleness.
+- Resume: `/speckit.flow-wiki.status` — the session-resume entry point.
 ```
 
 `INDEX.md` — the page directory (maintained by `ingest` and `lint`):
@@ -84,11 +89,11 @@ change the rules; `/speckit.wiki.*` commands read it before writing anything.
 ```markdown
 # Wiki Index
 
-One line per page, grouped by type. Maintained by `/speckit.wiki.ingest` and
-regenerated by `/speckit.wiki.lint` — hand edits will be preserved only in
+One line per page, grouped by type. Maintained by `/speckit.flow-wiki.ingest` and
+regenerated by `/speckit.flow-wiki.lint` — hand edits will be preserved only in
 page files, not here.
 
-_No pages yet. Run `/speckit.wiki.ingest` to add the first source._
+_No pages yet. Run `/speckit.flow-wiki.ingest` to add the first source._
 ```
 
 `sources.md` — the source registry (raw sources are never copied, only pointed to):
@@ -112,8 +117,8 @@ Output a short confirmation:
 - The resolved `WIKI_DIR` and the three files created.
 - The scope (or a note that none is set).
 - The active caps (pages per ingest, words per page, query slice).
-- Next step: `/speckit.wiki.ingest` to compound the first source — a feature's
-  `research.md`, a file, or a URL; `/speckit.wiki.status` at any time —
+- Next step: `/speckit.flow-wiki.ingest` to compound the first source — a feature's
+  `research.md`, a file, or a URL; `/speckit.flow-wiki.status` at any time —
   including from a brand-new session — to resume from the files.
 
 ## Guardrails

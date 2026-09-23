@@ -39,9 +39,9 @@ the bookkeeping — summarizing, cross-referencing, consistency maintenance.
 | Raw sources | `wiki/sources.md` — an append-only registry (S-ids) of feature artifacts, files, and URLs; pointed to, never copied |
 | Wiki pages | `wiki/pages/*.md` with frontmatter (`title`, `type`, `sources`, `updated`) and relative cross-links |
 | The schema | `wiki/SCHEMA.md` — page-type taxonomy, naming/linking/citation rules, maintenance workflows; user-editable, command-obeyed |
-| Ingest | `/speckit.wiki.ingest` — register → extract → cap-bounded page updates → index maintenance |
-| Query | `/speckit.wiki.query` — slice-bounded, citation-required, honest coverage verdict |
-| Lint | `/speckit.wiki.lint` — six checks; mechanical auto-fix, semantic report-only |
+| Ingest | `/speckit.flow-wiki.ingest` — register → extract → cap-bounded page updates → index maintenance |
+| Query | `/speckit.flow-wiki.query` — slice-bounded, citation-required, honest coverage verdict |
+| Lint | `/speckit.flow-wiki.lint` — six checks; mechanical auto-fix, semantic report-only |
 | "Human curates, LLM bookkeeps" | You choose what to ingest and when to resolve conflicts; commands handle citations, cross-links, index, and reports |
 
 ## Deliberate differences from the gist
@@ -78,7 +78,7 @@ the safety boundary: prose is never machine-rewritten.
 
 **Status as a first-class operation.** The gist assumes a continuous
 operator; agent sessions die (restart, compaction, window overflow).
-`/speckit.wiki.status` is the session-resume entry point, mirroring the
+`/speckit.flow-wiki.status` is the session-resume entry point, mirroring the
 pattern proven by the Research Harness extension: files are the memory,
 context is rebuilt on demand.
 

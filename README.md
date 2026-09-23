@@ -1,14 +1,16 @@
-# LLM Wiki — a Spec Kit extension
+# Spec Kit Flow Wiki
 
-**An LLM-maintained, compounding project wiki for spec-driven development**:
-source ingestion with per-claim citations, questions answered from the wiki
-(never from vibes), and a lint pass that keeps the knowledge base honest.
+**Flow Wiki is the wiki extension in the Spec Kit Flow project family.** It
+provides an LLM-maintained, compounding project wiki for spec-driven
+development: source ingestion with per-claim citations, questions answered
+from the wiki (never from vibes), and a lint pass that keeps the knowledge
+base honest.
 
 Based on **Andrej Karpathy's "LLM Wiki"**
 ([gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)) —
 a pattern for knowledge bases where the LLM actively *maintains* a persistent
 wiki instead of rediscovering knowledge from raw documents on every question.
-This community extension adapts that pattern to
+This Spec Kit Flow project adapts that pattern to
 [Spec Kit](https://github.com/github/spec-kit) workflows. It is not affiliated
 with Karpathy or GitHub.
 
@@ -39,9 +41,9 @@ every ingest makes every future answer cheaper and better.
 | Raw sources — immutable documents | `wiki/sources.md` registry: feature artifacts, files, URLs — pointed to, never copied |
 | The wiki — LLM-written, cross-referenced pages | `wiki/pages/*.md` + `wiki/INDEX.md`, typed (concept / decision / component / reference / howto) |
 | The schema — structure & workflow rules | `wiki/SCHEMA.md`, user-editable; every command obeys it |
-| **Ingest** — read source, update 10–15 related pages | `/speckit.wiki.ingest` — capped pages per run, citation on every claim, conflicts kept visible |
-| **Query** — answer with citations | `/speckit.wiki.query` — answers only from pages; gaps become concrete ingest suggestions |
-| **Lint** — contradictions, orphans, stale claims, gaps | `/speckit.wiki.lint` — mechanical fixes applied, semantic issues reported with suggested edits |
+| **Ingest** — read source, update 10–15 related pages | `/speckit.flow-wiki.ingest` — capped pages per run, citation on every claim, conflicts kept visible |
+| **Query** — answer with citations | `/speckit.flow-wiki.query` — answers only from pages; gaps become concrete ingest suggestions |
+| **Lint** — contradictions, orphans, stale claims, gaps | `/speckit.flow-wiki.lint` — mechanical fixes applied, semantic issues reported with suggested edits |
 
 ## What you gain
 
@@ -56,13 +58,15 @@ every ingest makes every future answer cheaper and better.
   and uncited claims; it fixes only mechanical drift and reports the rest.
   The wiki degrades loudly, not silently.
 - **Plain markdown in your repo** — diffable, PR-reviewable, shared by every
-  agent and teammate; a new session resumes from `/speckit.wiki.status`, not
+  agent and teammate; a new session resumes from `/speckit.flow-wiki.status`, not
   from a lost context window.
 
 ## Installation
 
+The project repository is [pegagio/spec-kit-flow-wiki](https://github.com/pegagio/spec-kit-flow-wiki). The `v2.0.0` archive provides the published extension. Spec Kit `>=1.0.1` is required.
+
 **Option 1 — by name, from the community catalog** (after the extension is
-listed). Spec Kit treats the community catalog as discovery-only by default,
+listed under the new ID). Spec Kit treats the community catalog as discovery-only by default,
 so allow installs from it once (per project, or per user via
 `~/.specify/extension-catalogs.yml`):
 
@@ -80,13 +84,13 @@ catalogs:
 ```
 
 ```bash
-specify extension add wiki
+specify extension add flow-wiki
 ```
 
-**Option 2 — zero config, pinned version.** Install straight from a release URL:
+**Option 2 — zero config, pinned version.** Install from the `v2.0.0` release archive:
 
 ```bash
-specify extension add wiki --from https://github.com/formin/spec-kit-wiki/archive/refs/tags/v1.0.0.zip
+specify extension add flow-wiki --from https://github.com/pegagio/spec-kit-flow-wiki/archive/refs/tags/v2.0.0.zip
 ```
 
 > URL installs show an *Untrusted Source* warning and ask
@@ -97,23 +101,33 @@ specify extension add wiki --from https://github.com/formin/spec-kit-wiki/archiv
 **Option 3 — for development:**
 
 ```bash
-git clone https://github.com/formin/spec-kit-wiki
-specify extension add --dev ./spec-kit-wiki
+specify extension add --dev /path/to/spec-kit-flow-wiki
 ```
 
-Requires Spec Kit `>=0.2.0`. Works with any agent Spec Kit supports (Claude
+Works with any agent Spec Kit supports (Claude
 Code, GitHub Copilot, Cursor, Gemini CLI, …) — commands are plain prompt
 files; no external tools, MCP servers, or network access required.
+
+Existing consumers must migrate from extension ID `wiki` to `flow-wiki` and transfer their config and environment values before removing the old registration. The old command and skill names are not aliases. Follow the [migration guide](docs/migration.md); after the new extension is installed and verified, remove the old ID with `specify extension remove wiki --keep-config --force`.
+
+The extension requires Specify CLI `>=1.0.1`. An installer that checks the manifest minimum reports:
+
+```text
+Extension requires spec-kit >=1.0.1, but <installed-version> is installed.
+Upgrade spec-kit with: uv tool install specify-cli --force --from git+https://github.com/github/spec-kit.git
+```
+
+Upgrade Specify before installing or migrating.
 
 ## Commands at a glance
 
 | Command | What it does | Touches disk |
 |---|---|---|
-| `/speckit.wiki.init [scope] [key=value…]` | Create `SCHEMA.md`, `INDEX.md`, `sources.md` | creates `wiki/` (never overwrites) |
-| `/speckit.wiki.ingest [source]` | Register a source, fold its knowledge into ≤N pages with citations | pages, `INDEX.md`, `sources.md` |
-| `/speckit.wiki.query [question]` | Answer from pages with citations; report coverage honestly | **read-only** |
-| `/speckit.wiki.lint [scope]` | Contradictions, orphans, stale claims, broken links, index drift | `lint-report.md` (+ mechanical index/link fixes) |
-| `/speckit.wiki.status [page-type \| full]` | Structural-only snapshot + one evidence-backed next action | **read-only** |
+| `/speckit.flow-wiki.init [scope] [key=value…]` | Create `SCHEMA.md`, `INDEX.md`, `sources.md` | creates `wiki/` (never overwrites) |
+| `/speckit.flow-wiki.ingest [source]` | Register a source, fold its knowledge into ≤N pages with citations | pages, `INDEX.md`, `sources.md` |
+| `/speckit.flow-wiki.query [question]` | Answer from pages with citations; report coverage honestly | **read-only** |
+| `/speckit.flow-wiki.lint [scope]` | Contradictions, orphans, stale claims, broken links, index drift | `lint-report.md` (+ mechanical index/link fixes) |
+| `/speckit.flow-wiki.status [page-type \| full]` | Structural-only snapshot + one evidence-backed next action | **read-only** |
 
 ## Where it fits in the Spec Kit workflow
 
@@ -121,21 +135,21 @@ The wiki is the **cross-feature memory layer**. Core stages produce
 knowledge; the wiki keeps it; later features and sessions consume it.
 
 ```text
-/speckit.wiki.query "what do we already know about <domain>?"
+/speckit.flow-wiki.query "what do we already know about <domain>?"
         │                    ← before specify: reuse prior art instead of re-deriving
 /speckit.specify ──▶ spec.md
         │
 /speckit.plan ──▶ plan.md + research.md
-        │  └─ hook after_plan → /speckit.wiki.ingest          (optional prompt)
+        │  └─ hook after_plan → /speckit.flow-wiki.ingest          (optional prompt)
         │       └─ the feature's verified research compounds into wiki pages
         │
 /speckit.tasks ──▶ tasks.md
         │
 /speckit.implement
-        │  └─ hook after_implement → /speckit.wiki.ingest     (optional prompt)
+        │  └─ hook after_implement → /speckit.flow-wiki.ingest     (optional prompt)
         │       └─ what the build taught (gotchas, actual behavior) is kept
         │
-  … periodically: /speckit.wiki.lint    · any time: /speckit.wiki.status
+  … periodically: /speckit.flow-wiki.lint    · any time: /speckit.flow-wiki.status
 ```
 
 Pairs cleanly with the
@@ -146,20 +160,20 @@ makes it *permanent and reusable across features*. `harness.report` writes
 
 ## Usage
 
-### 1. `/speckit.wiki.init` — once per project
+### 1. `/speckit.flow-wiki.init` — once per project
 
 ```text
-/speckit.wiki.init Everything we learn about the payments domain and our vendor constraints
+/speckit.flow-wiki.init Everything we learn about the payments domain and our vendor constraints
 ```
 
 Creates `wiki/SCHEMA.md` (the rules — edit freely; commands obey it), `wiki/INDEX.md`, and `wiki/sources.md`. Initialization never creates knowledge pages or synthesized claims. It is idempotent: re-running without a scope writes nothing, while a supplied scope is appended as one new numbered item instead of overwriting existing wiki content.
 
-### 2. `/speckit.wiki.ingest` — whenever knowledge is produced
+### 2. `/speckit.flow-wiki.ingest` — whenever knowledge is produced
 
 ```text
-/speckit.wiki.ingest                          # default: active feature's research.md + plan decisions
-/speckit.wiki.ingest docs/postmortems/2026-05-outage.md
-/speckit.wiki.ingest https://stripe.com/docs/rate-limits
+/speckit.flow-wiki.ingest                          # default: active feature's research.md + plan decisions
+/speckit.flow-wiki.ingest docs/postmortems/2026-05-outage.md
+/speckit.flow-wiki.ingest https://stripe.com/docs/rate-limits
 ```
 
 Registers the source (`S007`), extracts what outlives the moment (decisions,
@@ -172,10 +186,10 @@ Project files and directories are contained to the repository; a directory is on
 
 Ingestion validates and prepares the full bounded change before synchronizing pages, `sources.md`, and `INDEX.md`. Read, fetch, containment, or validation failure leaves those artifacts unchanged. Re-ingestion preserves the stable source ID and first-ingested date while refreshing supported claims and keeping disagreements visible.
 
-### 3. `/speckit.wiki.query` — the payoff
+### 3. `/speckit.flow-wiki.query` — the payoff
 
 ```text
-/speckit.wiki.query Why did we pick SQLite over Postgres, and does that still hold?
+/speckit.flow-wiki.query Why did we pick SQLite over Postgres, and does that still hold?
 ```
 
 Loads the index, reads at most `pages_slice` relevant pages, and answers with
@@ -186,10 +200,10 @@ Index metadata selects candidates but is not itself evidence. Query reads only s
 
 Covered means every material part of the question has valid evidence, Partial means only some do, and Uncovered means none do. Conflicts remain visible with every cited side. Query never repairs structural problems or changes project files.
 
-### 4. `/speckit.wiki.lint` — regular maintenance
+### 4. `/speckit.flow-wiki.lint` — regular maintenance
 
 ```text
-/speckit.wiki.lint
+/speckit.flow-wiki.lint
 ```
 
 Six checks (index drift, broken links, orphans, contradictions, staleness,
@@ -201,10 +215,10 @@ The automatic repair allowlist is intentionally narrow: regenerate `INDEX.md` fr
 
 Findings carry exact evidence and stable ordering. Lint prepares and validates the complete fix set before writing, and the report records what was actually applied. Each run ends with exactly one highest-value unresolved action, or states that no action is needed.
 
-### 5. `/speckit.wiki.status` — resume, or decide what's next
+### 5. `/speckit.flow-wiki.status` — resume, or decide what's next
 
 ```text
-/speckit.wiki.status
+/speckit.flow-wiki.status
 → 14 pages (5 decision · 4 concept · 3 component · 2 reference) · 9 sources
 → 1 unresolved conflict: payments-retries.md (S002 vs S007)
 → Recommendation: resolve the conflict in payments-retries.md between S002 and S007
@@ -227,14 +241,14 @@ Pass one configured page type to filter the page slice, or `full` to expand ever
 ## Patterns & recipes
 
 **Query before specify** — start each feature with
-`/speckit.wiki.query <the feature's domain>`; prior decisions and constraints
+`/speckit.flow-wiki.query <the feature's domain>`; prior decisions and constraints
 flow into the new spec instead of being re-derived (or contradicted).
 
 **Ingest on the hooks** — accept the `after_plan` and `after_implement`
 prompts and the wiki grows exactly when knowledge is produced, at zero extra
 ceremony.
 
-**Weekly lint** — a standing `/speckit.wiki.lint` keeps staleness and
+**Weekly lint** — a standing `/speckit.flow-wiki.lint` keeps staleness and
 conflicts from accumulating; the report is small and the fixes are usually
 one re-ingest.
 
@@ -250,14 +264,14 @@ the permanent knowledge layer.
 
 Both optional (you are prompted):
 
-- `after_plan` → `speckit.wiki.ingest` — compound the feature's research and
+- `after_plan` → `speckit.flow-wiki.ingest` — compound the feature's research and
   plan decisions into the wiki.
-- `after_implement` → `speckit.wiki.ingest` — record what the implementation
+- `after_implement` → `speckit.flow-wiki.ingest` — record what the implementation
   taught before it evaporates.
 
 ## Configuration
 
-Copy `config-template.yml` to `.specify/extensions/wiki/wiki-config.yml` and
+Copy `config-template.yml` to `.specify/extensions/flow-wiki/flow-wiki-config.yml` and
 adjust:
 
 ```yaml
@@ -275,7 +289,7 @@ lint:
   auto_fix: index-and-links   # none | index-and-links
 ```
 
-Precedence is resolved per setting from lowest to highest: extension defaults → config file → `SPECKIT_WIKI_*` environment variables → per-invocation `key=value` arguments. Numeric limits are validated before use, and `lint.auto_fix` accepts only `none` or `index-and-links`.
+Precedence is resolved per setting from lowest to highest: extension defaults → config file → `SPECKIT_FLOW_WIKI_*` environment variables → per-invocation `key=value` arguments. Numeric limits are validated before use, and `lint.auto_fix` accepts only `none` or `index-and-links`.
 
 The configured state directory must remain inside the repository after path normalization and existing-symlink resolution. Initialization rejects escaping values such as `directory=../outside-wiki` before reading or writing wiki state.
 
@@ -304,7 +318,7 @@ deliberate differences from the gist.
 
 ## License
 
-[MIT](LICENSE) © 2026 formin
+[MIT](LICENSE) © 2026 pegagio
 
 Credits: the LLM Wiki pattern by Andrej Karpathy
 ([gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f));

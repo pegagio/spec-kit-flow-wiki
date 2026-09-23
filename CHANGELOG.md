@@ -1,8 +1,17 @@
 # Changelog
 
-All notable changes to the LLM Wiki extension are documented here.
+All notable changes to the Spec Kit Flow Wiki extension are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [2.0.0] - 2026-09-23
+
+### Changed
+
+- Renamed the project identity to `spec-kit-flow-wiki` and the extension ID to `flow-wiki`.
+- Replaced the five `speckit.wiki.*` commands and `speckit-wiki-*` skills with `speckit.flow-wiki.*` commands and `speckit-flow-wiki-*` skills; old names are not aliases.
+- Replaced `wiki-config.yml` and `SPECKIT_WIKI_*` with `flow-wiki-config.yml` and `SPECKIT_FLOW_WIKI_*`; existing consumers must migrate their values explicitly.
+- Raised the minimum supported Specify CLI version to 1.0.1.
 
 ## [1.1.2] - 2026-09-23
 

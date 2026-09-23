@@ -1,5 +1,10 @@
 ---
-description: "Ingest a source (feature artifacts, file, or URL) and update the related wiki pages with citations"
+name: speckit-flow-wiki-ingest
+description: Ingest a source (feature artifacts, file, or URL) and update the related wiki pages with citations
+compatibility: Requires spec-kit project structure with .specify/ directory
+metadata:
+  author: github-spec-kit
+  source: flow-wiki:commands/speckit.flow-wiki.ingest.md
 ---
 
 # Ingest a Source into the Wiki
@@ -26,7 +31,7 @@ $ARGUMENTS
 
 ### 1. Resolve configuration and the wiki
 
-Load and validate configuration exactly as `/speckit.wiki.init` does. If `WIKI_DIR/SCHEMA.md` does not exist, run the complete initialization workflow before continuing and record that action for the report. Read `SCHEMA.md`; its rules override this prompt's defaults where they conflict.
+Load and validate configuration exactly as `/speckit.flow-wiki.init` does. If `WIKI_DIR/SCHEMA.md` does not exist, run the complete initialization workflow before continuing and record that action for the report. Read `SCHEMA.md`; its rules override this prompt's defaults where they conflict.
 
 ### 2. Resolve and validate one source
 
@@ -93,8 +98,8 @@ If any write cannot complete, restore the page, registry, and index content from
 - The source and its `S-id` (new or re-ingested).
 - Pages created and updated — one line each on what changed.
 - Skipped directory entries, conflicts, and items deferred by page or linking limits.
-- Next step: `/speckit.wiki.lint` if conflicts were flagged, otherwise
-  `/speckit.wiki.query <question>` to test what the wiki now knows.
+- Next step: `/speckit.flow-wiki.lint` if conflicts were flagged, otherwise
+  `/speckit.flow-wiki.query <question>` to test what the wiki now knows.
 
 ## Guardrails
 

@@ -1,7 +1,7 @@
 # Wiki Schema
 
 This file defines how this wiki is structured and maintained. Edit it to
-change the rules; `/speckit.wiki.*` commands read it before writing anything.
+change the rules; `/speckit.flow-wiki.*` commands read it before writing anything.
 
 ## Scope
 1. The concepts, motivations, architectural decisions, design constraints, operational behavior, and lessons learned while dogfooding the spec-kit-wiki extension in this repository.
@@ -26,7 +26,7 @@ change the rules; `/speckit.wiki.*` commands read it before writing anything.
 - Frontmatter per page: `title`, `type`, `sources`, `updated` (ISO date).
 
 ## Maintenance workflows
-- Grow: `/speckit.wiki.ingest <source>` — the only way knowledge enters.
-- Use: `/speckit.wiki.query <question>` — answers come from pages, cited.
-- Check: `/speckit.wiki.lint` — drift, orphans, contradictions, staleness.
-- Resume: `/speckit.wiki.status` — the session-resume entry point.
+- Grow: `/speckit.flow-wiki.ingest <source>` — the only way knowledge enters.
+- Use: `/speckit.flow-wiki.query <question>` — answers come from pages, cited.
+- Check: `/speckit.flow-wiki.lint` — drift, orphans, contradictions, staleness.
+- Resume: `/speckit.flow-wiki.status` — the session-resume entry point.

@@ -1,10 +1,5 @@
 ---
-name: speckit-wiki-status
-description: 'Compact wiki snapshot: counts, freshness, open lint issues, and one recommended next action'
-compatibility: Requires spec-kit project structure with .specify/ directory
-metadata:
-  author: github-spec-kit
-  source: wiki:commands/speckit.wiki.status.md
+description: "Compact wiki snapshot: counts, freshness, open lint issues, and one recommended next action"
 ---
 
 # Wiki Status
@@ -23,9 +18,9 @@ Accept no argument, one page type configured in the schema, or `full`. Treat the
 
 ### 1. Resolve the wiki without mutation
 
-Load and validate configuration exactly as `/speckit.wiki.init` does, including repository containment, but do not create, repair, normalize, or rewrite configuration or wiki state.
+Load and validate configuration exactly as `/speckit.flow-wiki.init` does, including repository containment, but do not create, repair, normalize, or rewrite configuration or wiki state.
 
-If `WIKI_DIR/SCHEMA.md` does not exist, output only one concrete recommendation: `/speckit.wiki.init <scope>`. Do not add other sections or recommendations.
+If `WIKI_DIR/SCHEMA.md` does not exist, output only one concrete recommendation: `/speckit.flow-wiki.init <scope>`. Do not add other sections or recommendations.
 
 ### 2. Read only bounded structural evidence
 
@@ -60,10 +55,10 @@ If a structural artifact is absent or malformed, keep every unaffected section t
 Build candidates only from evidence read in this invocation. Choose the first applicable priority; for multiple candidates at that priority, choose the newest relevant evidence, then lexical page or source identity:
 
 1. **Conflict**: recommend resolving one reported conflict and name its page and conflicting source IDs. Do not choose a winning claim.
-2. **Lint needed**: when the lint report is absent or its recorded run date is older than a later source ingestion, recommend `/speckit.wiki.lint`.
-3. **Empty wiki**: when no pages are indexed, recommend ingesting one concrete existing active-feature artifact, naming its exact path. If no candidate path is evidenced, recommend `/speckit.wiki.ingest` without inventing one.
-4. **Un-ingested feature artifact**: when one concrete existing active-feature artifact is newer than its registry evidence or has no normalized identity in the registry, recommend `/speckit.wiki.ingest <exact-path>`.
-5. **Coverage probe**: recommend `/speckit.wiki.query <one question grounded in the recorded scope>`. If scope is unset, recommend setting scope or `/speckit.wiki.query "what does this wiki currently cover?"`.
+2. **Lint needed**: when the lint report is absent or its recorded run date is older than a later source ingestion, recommend `/speckit.flow-wiki.lint`.
+3. **Empty wiki**: when no pages are indexed, recommend ingesting one concrete existing active-feature artifact, naming its exact path. If no candidate path is evidenced, recommend `/speckit.flow-wiki.ingest` without inventing one.
+4. **Un-ingested feature artifact**: when one concrete existing active-feature artifact is newer than its registry evidence or has no normalized identity in the registry, recommend `/speckit.flow-wiki.ingest <exact-path>`.
+5. **Coverage probe**: recommend `/speckit.flow-wiki.query <one question grounded in the recorded scope>`. If scope is unset, recommend setting scope or `/speckit.flow-wiki.query "what does this wiki currently cover?"`.
 
 Render only the selected action. Never emit a second fallback, follow-up sequence, generic maintenance suggestion, or invented path.
 

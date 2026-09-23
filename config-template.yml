@@ -1,8 +1,8 @@
-# LLM Wiki configuration
-# Copy to .specify/extensions/wiki/wiki-config.yml and customize.
+# Flow Wiki configuration
+# Copy to .specify/extensions/flow-wiki/flow-wiki-config.yml and customize.
 # Every value here is optional — missing keys fall back to extension defaults.
-# Environment variable overrides use the SPECKIT_WIKI_* prefix
-# (e.g. SPECKIT_WIKI_INGEST_MAX_PAGES_PER_INGEST=8).
+# Environment variable overrides use the SPECKIT_FLOW_WIKI_* prefix
+# (e.g. SPECKIT_FLOW_WIKI_INGEST_MAX_PAGES_PER_INGEST=8).
 
 # Where the wiki lives, relative to the repository root. Normalized paths that
 # escape the repository, including through existing symlinks, are rejected
