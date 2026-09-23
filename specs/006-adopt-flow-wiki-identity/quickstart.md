@@ -7,7 +7,7 @@ Run these checks after implementation from the repository root. Use disposable c
 - The pinned Specify CLI 1.0.1 is available.
 - The root extension source has the new manifest and five renamed command files.
 - Git tag `v1.1.2` is available locally for the old-extension migration fixture.
-- The published repository rename is treated as a later verification step.
+- The published repository and release tag are verified in the Published Repository Check below.
 
 ## Clean Consumer
 
@@ -83,7 +83,11 @@ git remote -v
 git ls-remote origin HEAD
 ```
 
-On 2026-09-23, GitHub repository metadata confirmed `pegagio/spec-kit-flow-wiki` exists, is public, and is not archived. The local `origin` now uses `git@github.com:pegagio/spec-kit-flow-wiki.git`. A local `git ls-remote origin HEAD` attempt could not resolve `github.com` in this environment, so Git transport reachability remains unverified here. Verify the README installation link against the new published location before release. The rename and release are separate external actions; do not report publication as complete before they occur.
+On 2026-09-23, GitHub repository metadata confirmed `pegagio/spec-kit-flow-wiki` exists, is public, and is not archived. The local `origin` now uses `git@github.com:pegagio/spec-kit-flow-wiki.git`.
+
+Tag `v2.0.0` was published at commit `7569666`. The exact GitHub archive URL in the README installed successfully in a newly initialized Specify 1.0.1 consumer. The consumer registered five `speckit.flow-wiki.*` commands, generated five `speckit-flow-wiki-*` skills, scaffolded `flow-wiki-config.yml`, and installed both hooks; no old command or skill aliases remained.
+
+The first local archive rehearsal included the checked-out `.specify` tree and exceeded Specify's 10 MiB ZIP member limit because it contained a Diagram binary. `.gitattributes` now excludes `.agents/`, `.specify/`, `.idea/`, `docs/`, `specs/`, `wiki/`, `CHANGELOG.md`, and `mise.toml` from GitHub tag archives. The final local Git archive contained 14 entries and installed successfully. Local `git ls-remote` was unavailable because this environment could not resolve `github.com`; GitHub repository metadata and the successful public HTTPS archive install confirmed the published target and tag.
 
 ## Validation Record
 

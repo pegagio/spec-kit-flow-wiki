@@ -82,9 +82,9 @@ Finish current documentation, validate the full tree, and complete external iden
 - [X] T029 Run the active-reference, privacy, historical-boundary, YAML/Markdown, payload, and `git diff --check` review in `specs/006-adopt-flow-wiki-identity/quickstart.md`; reconcile active references in `extension.yml`, `commands/`, `config-template.yml`, `README.md`, `docs/`, `.specify/extensions.yml`, `wiki/SCHEMA.md`, and `wiki/INDEX.md`. Preserve historically accurate cited claims in other wiki pages.
 - [X] T030 Run the full disposable validation in `specs/006-adopt-flow-wiki-identity/quickstart.md`, then `$speckit-converge` against `specs/006-adopt-flow-wiki-identity/spec.md`, `plan.md`, and `tasks.md` until no implementation gaps remain.
 - [X] T031 After local validation and review, rename the published GitHub repository to `pegagio/spec-kit-flow-wiki`; verify the target before updating `.git/config` `origin`, and record the verified location in `specs/006-adopt-flow-wiki-identity/quickstart.md`.
-- [ ] T032 After explicit publication authorization, publish the reviewed `extension.yml` and `README.md` at the verified repository location and validate installation from the published instructions in a fresh consumer using `specs/006-adopt-flow-wiki-identity/quickstart.md`.
+- [X] T032 After explicit publication authorization, publish the reviewed `extension.yml` and `README.md` at the verified repository location and validate installation from the published instructions in a fresh consumer using `specs/006-adopt-flow-wiki-identity/quickstart.md`.
 
-**Checkpoint**: The source, installed consumers, migration guide, and verified published location agree. Release publication remains subject to its explicit execution gate.
+**Checkpoint**: The source, installed consumers, migration guide, and verified published location agree. The v2.0.0 archive installs from the published README instructions in a fresh consumer.
 
 ## Dependencies & Execution Order
 
