@@ -1,2 +1,9 @@
-.git/
-
+# Ship only the files required to run the extension. An allowlist keeps new
+# repository-only files from silently becoming part of future installs.
+*
+!extension.yml
+!commands/
+!commands/**
+!config-template.yml
+!README.md
+!LICENSE
