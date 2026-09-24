@@ -16,7 +16,7 @@ The five actions retain their distinct responsibilities under `speckit.flow-wiki
 
 Specify generates corresponding `speckit-flow-wiki-<action>` skill IDs; its generated human-readable skill names are accepted. (S007, S008)
 
-The extension requires Specify CLI 1.0.1 or newer. Its installed configuration is `flow-wiki-config.yml`, with `SPECKIT_FLOW_WIKI_*` environment overrides. Old command and skill IDs are not aliases for the new ones. (S006)
+The published `v2.0.0` archive requires Specify CLI 1.0.1 or newer; the current checkout requires 1.0.10.dev0 or newer. Its installed configuration is `flow-wiki-config.yml`, with `SPECKIT_FLOW_WIKI_*` environment overrides. Old command and skill IDs are not aliases for the new ones. (S006)
 
 The [wiki command lifecycle](./wiki-command-lifecycle.md) describes each action, and [configuration resolution](./configuration-resolution.md) records the current override namespace and precedence. (S006)
 

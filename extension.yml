@@ -13,7 +13,7 @@ extension:
   homepage: https://github.com/pegagio/spec-kit-flow-wiki
 
 requires:
-  speckit_version: ">=1.0.1"
+  speckit_version: ">=1.0.10.dev0"
 
 provides:
   commands:

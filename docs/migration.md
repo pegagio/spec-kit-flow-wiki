@@ -21,7 +21,7 @@ The Specify-generated human-readable skill names may differ from `FlowKit <actio
 
 ## Migration steps
 
-1. Use Specify CLI 1.0.1 or newer. Record the current extension registry, configured hooks, active command and skill references, old config values, and environment overrides. Save a rollback copy of `wiki-config.yml` outside `.specify/extensions/wiki/` and record a content baseline for `wiki/`.
+1. Use Specify CLI 1.0.1 or newer for the published `v2.0.0` archive, or 1.0.10.dev0 or newer for the current checkout. Record the current extension registry, configured hooks, active command and skill references, old config values, and environment overrides. Save a rollback copy of `wiki-config.yml` outside `.specify/extensions/wiki/` and record a content baseline for `wiki/`.
 2. Install the published `v2.0.0` archive while `wiki` is still installed: `specify extension add flow-wiki --from https://github.com/pegagio/spec-kit-flow-wiki/archive/refs/tags/v2.0.0.zip`. For development from a local checkout, use `specify extension add --dev /path/to/spec-kit-flow-wiki`. See the [README installation instructions](../README.md#installation) for the source warning and other installation options.
 3. Do not invoke either extension or trigger `after_plan` or `after_implement` workflows while both extensions are installed. This avoids duplicate optional ingest hooks during the temporary coexistence period.
 4. Transfer every value from `.specify/extensions/wiki/wiki-config.yml` to `.specify/extensions/flow-wiki/flow-wiki-config.yml` without changing the value. Preserve per-setting precedence: extension defaults, config file, `SPECKIT_FLOW_WIKI_*` environment overrides, then per-invocation `key=value` arguments. For each environment override, export the corresponding `SPECKIT_FLOW_WIKI_<SETTING>` value and stop exporting `SPECKIT_WIKI_<SETTING>`; the old prefix is ignored.
@@ -37,10 +37,10 @@ Keep the old config backup and wiki baseline until the new extension passes all 
 
 ## Unsupported Specify versions
 
-The extension requires Specify CLI `>=1.0.1`. When a CLI version that performs manifest compatibility checks is too old, the installer reports:
+The current checkout requires Specify CLI `>=1.0.10.dev0`. When a CLI version that performs manifest compatibility checks is too old, the installer reports:
 
 ```text
-Extension requires spec-kit >=1.0.1, but <installed-version> is installed.
+Extension requires spec-kit >=1.0.10.dev0, but <installed-version> is installed.
 Upgrade spec-kit with: uv tool install specify-cli --force --from git+https://github.com/github/spec-kit.git
 ```
 

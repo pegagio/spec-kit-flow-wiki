@@ -63,7 +63,7 @@ every ingest makes every future answer cheaper and better.
 
 ## Installation
 
-The project repository is [pegagio/spec-kit-flow-wiki](https://github.com/pegagio/spec-kit-flow-wiki). The `v2.0.0` archive provides the published extension. Spec Kit `>=1.0.1` is required.
+The project repository is [pegagio/spec-kit-flow-wiki](https://github.com/pegagio/spec-kit-flow-wiki). The `v2.0.0` archive provides the published extension and requires Spec Kit `>=1.0.1`. The current checkout requires Spec Kit `>=1.0.10.dev0`, including local builds such as `1.0.10.dev0+pegagio.2`.
 
 **Option 1 — by name, from the community catalog** (after the extension is
 listed under the new ID). Spec Kit treats the community catalog as discovery-only by default,
@@ -110,10 +110,10 @@ files; no external tools, MCP servers, or network access required.
 
 Existing consumers must migrate from extension ID `wiki` to `flow-wiki` and transfer their config and environment values before removing the old registration. The old command and skill names are not aliases. Follow the [migration guide](docs/migration.md); after the new extension is installed and verified, remove the old ID with `specify extension remove wiki --keep-config --force`.
 
-The extension requires Specify CLI `>=1.0.1`. An installer that checks the manifest minimum reports:
+The current checkout requires Specify CLI `>=1.0.10.dev0`. An installer that checks the manifest minimum reports:
 
 ```text
-Extension requires spec-kit >=1.0.1, but <installed-version> is installed.
+Extension requires spec-kit >=1.0.10.dev0, but <installed-version> is installed.
 Upgrade spec-kit with: uv tool install specify-cli --force --from git+https://github.com/github/spec-kit.git
 ```
 
