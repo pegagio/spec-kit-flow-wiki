@@ -14,7 +14,11 @@
           "speckit.time-machine.status"
         ]
       },
-      "registered_skills": [],
+      "registered_skills": [
+        "speckit-time-machine-analyze",
+        "speckit-time-machine-next",
+        "speckit-time-machine-status"
+      ],
       "installed_at": "2026-08-26T14:55:33.605334+00:00"
     },
     "flow-wiki": {
@@ -32,7 +36,13 @@
           "speckit.flow-wiki.status"
         ]
       },
-      "registered_skills": [],
+      "registered_skills": [
+        "speckit-flow-wiki-init",
+        "speckit-flow-wiki-ingest",
+        "speckit-flow-wiki-query",
+        "speckit-flow-wiki-lint",
+        "speckit-flow-wiki-status"
+      ],
       "installed_at": "2026-09-23T15:10:59.071265+00:00"
     }
   }

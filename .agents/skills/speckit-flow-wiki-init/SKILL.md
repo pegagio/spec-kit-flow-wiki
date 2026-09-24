@@ -1,11 +1,14 @@
 ---
 name: speckit-flow-wiki-init
-description: Create the project wiki skeleton (schema, index, source registry) — the three-layer LLM Wiki structure
+description: Create the project wiki skeleton (schema, index, source registry) — the
+  three-layer LLM Wiki structure
 compatibility: Requires spec-kit project structure with .specify/ directory
 metadata:
   author: github-spec-kit
-  source: flow-wiki:commands/speckit.flow-wiki.init.md
+  source: extension:flow-wiki
 ---
+
+# Flow Wiki Init Skill
 
 # Initialize Flow Wiki
 

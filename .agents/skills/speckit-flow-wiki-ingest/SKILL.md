@@ -1,11 +1,14 @@
 ---
 name: speckit-flow-wiki-ingest
-description: Ingest a source (feature artifacts, file, or URL) and update the related wiki pages with citations
+description: Ingest a source (feature artifacts, file, or URL) and update the related
+  wiki pages with citations
 compatibility: Requires spec-kit project structure with .specify/ directory
 metadata:
   author: github-spec-kit
-  source: flow-wiki:commands/speckit.flow-wiki.ingest.md
+  source: extension:flow-wiki
 ---
+
+# Flow Wiki Ingest Skill
 
 # Ingest a Source into the Wiki
 

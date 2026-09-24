@@ -1,11 +1,14 @@
 ---
 name: speckit-flow-wiki-query
-description: Answer a question from the wiki with page and source citations; flag coverage gaps
+description: Answer a question from the wiki with page and source citations; flag
+  coverage gaps
 compatibility: Requires spec-kit project structure with .specify/ directory
 metadata:
   author: github-spec-kit
-  source: flow-wiki:commands/speckit.flow-wiki.query.md
+  source: extension:flow-wiki
 ---
+
+# Flow Wiki Query Skill
 
 # Query the Wiki
 

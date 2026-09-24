@@ -1,11 +1,14 @@
 ---
 name: speckit-time-machine-analyze
-description: Scan the codebase and generate a sequenced feature queue for the Time Machine workflow
+description: Scan the codebase and generate a sequenced feature queue for the Time
+  Machine workflow
 compatibility: Requires spec-kit project structure with .specify/ directory
 metadata:
   author: github-spec-kit
-  source: time-machine:commands/analyze.md
+  source: extension:time-machine
 ---
+
+# Time Machine Analyze Skill
 
 # Time Machine — Analyze
 

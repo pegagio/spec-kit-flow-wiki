@@ -1,11 +1,14 @@
 ---
 name: speckit-time-machine-next
-description: Run the full SDD workflow for every pending feature in the Time Machine queue, sequentially
+description: Run the full SDD workflow for every pending feature in the Time Machine
+  queue, sequentially
 compatibility: Requires spec-kit project structure with .specify/ directory
 metadata:
   author: github-spec-kit
-  source: time-machine:commands/next.md
+  source: extension:time-machine
 ---
+
+# Time Machine Next Skill
 
 # Time Machine — Next Feature
 

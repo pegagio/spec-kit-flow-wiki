@@ -1,11 +1,14 @@
 ---
 name: speckit-flow-wiki-lint
-description: 'Health-check the wiki: contradictions, orphan pages, stale claims, broken links, index drift'
+description: 'Health-check the wiki: contradictions, orphan pages, stale claims, broken
+  links, index drift'
 compatibility: Requires spec-kit project structure with .specify/ directory
 metadata:
   author: github-spec-kit
-  source: flow-wiki:commands/speckit.flow-wiki.lint.md
+  source: extension:flow-wiki
 ---
+
+# Flow Wiki Lint Skill
 
 # Lint the Wiki
 

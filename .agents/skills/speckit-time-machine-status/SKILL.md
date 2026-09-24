@@ -4,8 +4,10 @@ description: Show Time Machine feature queue progress
 compatibility: Requires spec-kit project structure with .specify/ directory
 metadata:
   author: github-spec-kit
-  source: time-machine:commands/status.md
+  source: extension:time-machine
 ---
+
+# Time Machine Status Skill
 
 # Time Machine — Status
 

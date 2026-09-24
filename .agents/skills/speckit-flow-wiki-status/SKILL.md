@@ -1,11 +1,14 @@
 ---
 name: speckit-flow-wiki-status
-description: 'Compact wiki snapshot: counts, freshness, open lint issues, and one recommended next action'
+description: 'Compact wiki snapshot: counts, freshness, open lint issues, and one
+  recommended next action'
 compatibility: Requires spec-kit project structure with .specify/ directory
 metadata:
   author: github-spec-kit
-  source: flow-wiki:commands/speckit.flow-wiki.status.md
+  source: extension:flow-wiki
 ---
+
+# Flow Wiki Status Skill
 
 # Wiki Status
 

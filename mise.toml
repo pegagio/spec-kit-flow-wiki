@@ -1,2 +1,2 @@
 [tools]
-"pipx:specify-cli" = "1.0.1"
+"pipx:specify-cli" = "1.0.10.dev0+pegagio.2"
