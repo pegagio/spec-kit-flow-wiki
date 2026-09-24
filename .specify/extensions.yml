@@ -1,18 +1,9 @@
 installed:
 - flow-wiki
-- time-machine
 settings:
   auto_execute_hooks: true
 hooks:
   after_implement:
-  - extension: time-machine
-    command: speckit.time-machine.next
-    enabled: true
-    optional: true
-    priority: 10
-    prompt: Feature implemented. Continue to the next feature in the queue?
-    description: ''
-    condition: null
   - extension: flow-wiki
     command: speckit.flow-wiki.ingest
     enabled: true
