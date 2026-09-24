@@ -63,6 +63,8 @@ every ingest makes every future answer cheaper and better.
 
 ## Installation
 
+Maintainers: follow [the release process](RELEASE.md) before tagging a version or handing it to the Spec Kit Flow catalog.
+
 The project repository is [pegagio/spec-kit-flow-wiki](https://github.com/pegagio/spec-kit-flow-wiki). The `v2.0.0` archive provides the published extension and requires Spec Kit `>=1.0.1`. The current checkout requires Spec Kit `>=1.0.10.dev0`, including local builds such as `1.0.10.dev0+pegagio.2`.
 
 **Option 1 — by name, from the community catalog** (after the extension is
